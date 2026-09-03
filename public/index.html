@@ -715,8 +715,10 @@
 
     const firestorePosts = async () => {
       try {
-        const snapshot = await db.collection('posts').where('status', '==', 'Published').orderBy('createdAt', 'desc').limit(6).get();
-        return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })).map((post) => ({
+        const snapshot = await db.collection('posts').orderBy('createdAt', 'desc').limit(50).get();
+        return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter((post) => post.status === 'Published')
+          .slice(0, 6).map((post) => ({
           title: post.title,
           summary: post.summary,
           source: post.author || 'Seun Web News',
@@ -725,7 +727,7 @@
           externalUrl: post.externalUrl || `article.html?id=${encodeURIComponent(post.id || `local-${Date.now()}`)}`,
           image: post.imageUrl || defaultNewsImage,
           category: post.category || 'General'
-        }));
+          }));
       } catch (error) {
         console.warn('Firestore posts not available:', error);
         return localPosts();
