@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seun Web News | Editor Dashboard</title>
+    <style>
+      :root {
+        --bg: #07131f;
+        --bg-soft: #0d1d2b;
+        --panel: #112738;
+        --panel-strong: #16334c;
+        --text: #eef6ff;
+        --muted: #b7c9d8;
+        --line: rgba(255,255,255,0.08);
+        --primary: #4ea7ff;
+        --primary-strong: #2a7ef2;
+        --accent: #f5b942;
+        --success: #42d39f;
+        --danger: #ff7a90;
+        --shadow: 0 18px 40px rgba(0,0,0,0.28);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, var(--bg) 0%, #0c1b2a 100%);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      button, input, textarea, select { font: inherit; }
+
+      .shell {
+        min-height: 100vh;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(7, 19, 31, 0.82);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 76px;
+        width: min(1240px, calc(100% - 32px));
+        margin: 0 auto;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #f7d778, #f5b942, #d98f17);
+        color: #0d1723;
+        font-weight: 900;
+        letter-spacing: -0.08em;
+      }
+
+      .top-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .ghost-btn, .primary-btn, .danger-btn {
+        border: none;
+        border-radius: 12px;
+        padding: 11px 16px;
+        cursor: pointer;
+      }
+
+      .ghost-btn {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--line);
+        color: var(--text);
+      }
+
+      .primary-btn {
+        background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+        color: #fff;
+      }
+
+      .danger-btn {
+        background: rgba(255,122,144,0.1);
+        border: 1px solid rgba(255,122,144,0.25);
+        color: #ffd8df;
+      }
+
+      .layout {
+        width: min(1240px, calc(100% - 32px));
+        margin: 22px auto 40px;
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 20px;
+      }
+
+      .sidebar {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 18px 14px;
+        min-height: 560px;
+      }
+
+      .sidebar-title {
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.72rem;
+        padding: 8px 10px 14px;
+      }
+
+      .nav-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        background: transparent;
+        border: 1px solid transparent;
+        color: var(--muted);
+        border-radius: 12px;
+        padding: 12px 12px;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .nav-item.active {
+        background: rgba(78,167,255,0.08);
+        border-color: rgba(78,167,255,0.24);
+        color: var(--text);
+      }
+
+      .content {
+        display: grid;
+        gap: 20px;
+      }
+
+      .panel {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+
+      .welcome-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .welcome-box h1 {
+        margin: 0 0 8px;
+        letter-spacing: -0.04em;
+        font-size: clamp(2rem, 3vw, 2.8rem);
+      }
+
+      .welcome-box p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(66,211,159,0.08);
+        border: 1px solid rgba(66,211,159,0.22);
+        color: var(--success);
+        font-weight: 700;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .stat-card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+      }
+
+      .stat-card .label {
+        color: var(--muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .stat-card strong {
+        display: block;
+        margin-top: 10px;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        letter-spacing: -0.06em;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+      }
+
+      input, textarea, select {
+        width: 100%;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        color: var(--text);
+        padding: 12px 14px;
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: 12px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 760px;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 14px 10px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .status-published { background: rgba(66,211,159,0.1); color: var(--success); }
+      .status-draft { background: rgba(245,185,66,0.1); color: var(--accent); }
+
+      .action-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .tiny-btn {
+        border: none;
+        border-radius: 10px;
+        padding: 8px 10px;
+        cursor: pointer;
+      }
+
+      .edit-btn { background: rgba(78,167,255,0.12); color: var(--primary); }
+      .delete-btn { background: rgba(255,122,144,0.12); color: #ffd8df; }
+
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          min-height: auto;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .stats-grid, .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .welcome-box {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <div class="brand" aria-label="Seun Web News editor dashboard">
+            <span class="brand-mark">SNH</span>
+            <span>SEUN WEB NEWS</span>
+          </div>
+
+          <div class="top-actions">
+            <button class="ghost-btn" id="home-btn" type="button">View Site</button>
+            <button class="primary-btn" id="logout-btn" type="button">Logout</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="sidebar-title">Dashboard</div>
+          <button class="nav-item active" type="button">Overview</button>
+          <button class="nav-item" type="button">Posts</button>
+          <button class="nav-item" type="button">Newsroom</button>
+          <button class="nav-item" type="button">Settings</button>
+        </aside>
+
+        <main class="content">
+          <section class="panel welcome-box">
+            <div>
+              <div class="status-pill">Online</div>
+              <h1 id="welcome-title">Welcome back</h1>
+              <p id="welcome-sub">Manage your stories, posts, and business updates.</p>
+            </div>
+            <button class="primary-btn" type="button" onclick="document.getElementById('post-form').scrollIntoView({ behavior: 'smooth' })">Create post</button>
+          </section>
+
+          <section class="stats-grid">
+            <div class="stat-card">
+              <div class="label">Published</div>
+              <strong id="published-count">0</strong>
+            </div>
+            <div class="stat-card">
+              <div class="label">Drafts</div>
+              <strong id="draft-count">0</strong>
+            </div>
+            <div class="stat-card">
+              <div class="label">Total Posts</div>
+              <strong id="total-count">0</strong>
+            </div>
+          </section>
+
+          <section class="panel" id="post-form">
+            <div class="section-title" style="margin-bottom: 18px; font-size: 1.3rem; font-weight: 700;">Create post</div>
+            <form id="article-form">
+              <div class="form-grid">
+                <label>
+                  Article title
+                  <input type="text" id="title" required />
+                </label>
+
+                <label>
+                  Category
+                  <select id="category">
+                    <option value="Business">Business</option>
+                    <option value="News">News</option>
+                    <option value="Branding">Branding</option>
+                    <option value="Strategy">Strategy</option>
+                    <option value="Growth">Growth</option>
+                  </select>
+                </label>
+
+                <label class="full-width">
+                  Short summary
+                  <textarea id="summary" required></textarea>
+                </label>
+
+                <label class="full-width">
+                  Article content
+                  <textarea id="content" required></textarea>
+                </label>
+
+                <label>
+                  Author
+                  <input type="text" id="author" value="Seun Web News" required />
+                </label>
+
+                <label>
+                  Image URL
+                  <input type="url" id="imageUrl" placeholder="https://example.com/article-image.jpg" />
+                </label>
+
+                <label>
+                  Status
+                  <select id="status">
+                    <option value="Published">Published</option>
+                    <option value="Draft">Draft</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button class="ghost-btn" type="reset">Clear</button>
+                <button class="primary-btn" type="submit">Save article</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <div style="font-size: 1.3rem; font-weight: 700;">Manage posts</div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Summary</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="posts-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script>
+      const POSTS_KEY = 'snh_posts';
+      const firebaseConfig = {
+        apiKey: 'AIzaSyAyCqg3RMxA2KRXg-YtuVn1CFePbfHn5sc',
+        authDomain: 'seunnewsite2026.firebaseapp.com',
+        projectId: 'seunnewsite2026',
+        storageBucket: 'seunnewsite2026.firebasestorage.app',
+        messagingSenderId: '674678776858'
+      };
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const postsCollection = db.collection('posts');
+      let posts = [];
+      let editingId = null;
+
+      const readLocalPosts = () => {
+        try {
+          const saved = JSON.parse(localStorage.getItem(POSTS_KEY) || '[]');
+          return Array.isArray(saved) ? saved : [];
+        } catch {
+          return [];
+        }
+      };
+
+      const writeLocalPosts = (items) => localStorage.setItem(POSTS_KEY, JSON.stringify(items));
+
+      const isImportedPost = (post) => post.origin === 'gnews' || Boolean(post.externalUrl && post.source);
+
+      const savePostToFirestore = async (post) => {
+        try {
+          const { id, ...postData } = post;
+          if (post.id && post.id.startsWith('local-')) {
+            const ref = await postsCollection.add(postData);
+            return { ...post, id: ref.id };
+          }
+          await postsCollection.doc(post.id).set(postData, { merge: true });
+          return post;
+        } catch (error) {
+          console.error('Firestore save failed:', error);
+          throw new Error('The article could not be saved to Firebase. Check your connection and editor permissions.');
+        }
+      };
+
+      const loadPostsFromFirestore = async () => {
+        try {
+          const snapshot = await postsCollection.orderBy('createdAt', 'desc').get();
+          return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        } catch (error) {
+          console.warn('Firestore load failed, using local storage fallback:', error);
+          return readLocalPosts();
+        }
+      };
+
+      const renderStats = () => {
+        const published = posts.filter((post) => post.status === 'Published').length;
+        const drafts = posts.filter((post) => post.status === 'Draft').length;
+        document.getElementById('published-count').textContent = String(published);
+        document.getElementById('draft-count').textContent = String(drafts);
+        document.getElementById('total-count').textContent = String(posts.length);
+      };
+
+      const renderTable = () => {
+        const tbody = document.getElementById('posts-table-body');
+
+        if (!posts.length) {
+          tbody.innerHTML = `<tr><td colspan="5" style="color: var(--muted);">No posts yet. Create your first article.</td></tr>`;
+          renderStats();
+          return;
+        }
+
+        tbody.innerHTML = posts.map((post) => {
+          const imported = isImportedPost(post);
+          return `
+          <tr>
+            <td><strong>${post.title}</strong></td>
+            <td>${post.category}</td>
+            <td>${post.summary}</td>
+            <td><span class="status-badge ${post.status === 'Published' ? 'status-published' : 'status-draft'}">${post.status}</span></td>
+            <td>
+              <div class="action-row">
+                <button class="tiny-btn edit-btn" data-id="${post.id}" type="button">${imported ? 'Repost' : 'Edit'}</button>
+                ${imported ? '<span style="color: var(--muted); font-size: 0.8rem;">Feed story</span>' : `<button class="tiny-btn delete-btn" data-id="${post.id}" type="button">Delete</button>`}
+              </div>
+            </td>
+          </tr>
+          `;
+        }).join('');
+
+        document.querySelectorAll('.edit-btn').forEach((button) => {
+          button.addEventListener('click', () => {
+            const id = button.dataset.id;
+            const post = posts.find((item) => item.id === id);
+            if (!post) return;
+            const imported = isImportedPost(post);
+            editingId = imported ? null : id;
+            document.getElementById('title').value = post.title;
+            document.getElementById('category').value = post.category;
+            document.getElementById('summary').value = post.summary;
+            document.getElementById('content').value = post.content;
+            document.getElementById('author').value = post.author;
+            document.getElementById('imageUrl').value = post.imageUrl || '';
+            document.getElementById('status').value = post.status;
+            if (imported) {
+              document.getElementById('content').value = post.content || post.summary || '';
+              document.getElementById('status').value = 'Published';
+            }
+            document.getElementById('post-form').scrollIntoView({ behavior: 'smooth' });
+          });
+        });
+
+        document.querySelectorAll('.delete-btn').forEach((button) => {
+          button.addEventListener('click', () => {
+            const id = button.dataset.id;
+            postsCollection.doc(id).delete().then(() => {
+              posts = posts.filter((post) => post.id !== id);
+              writeLocalPosts(posts);
+              renderTable();
+            }).catch(() => alert('Unable to delete this article.'));
+          });
+        });
+
+        renderStats();
+      };
+
+      const initSession = (user) => {
+        if (!user || user.email.toLowerCase() !== 'seunjoel05@gmail.com') {
+          auth.signOut();
+          window.location.href = 'login.html';
+          return false;
+        }
+        const title = document.getElementById('welcome-title');
+        title.textContent = `Welcome back, ${user.displayName || 'Editor'}`;
+
+        const sub = document.getElementById('welcome-sub');
+        sub.textContent = `${user.email} | Manage your posts and news updates.`;
+        return true;
+      };
+
+      document.getElementById('home-btn').addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        auth.signOut().then(() => { window.location.href = 'login.html'; });
+      });
+
+      document.getElementById('article-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const nextPost = {
+          id: editingId || `local-${Date.now()}`,
+          title: document.getElementById('title').value.trim(),
+          category: document.getElementById('category').value,
+          summary: document.getElementById('summary').value.trim(),
+          content: document.getElementById('content').value.trim(),
+          author: document.getElementById('author').value.trim(),
+          imageUrl: document.getElementById('imageUrl').value.trim(),
+          externalUrl: '',
+          origin: 'manual',
+          status: document.getElementById('status').value,
+          createdAt: editingId ? posts.find((post) => post.id === editingId)?.createdAt || new Date().toISOString() : new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        };
+
+        if (!nextPost.title || !nextPost.summary || !nextPost.content || !nextPost.author) {
+          alert('Please complete all required fields.');
+          return;
+        }
+
+        try {
+          const savedPost = await savePostToFirestore(nextPost);
+          const localPosts = readLocalPosts();
+          const updatedPosts = editingId
+            ? localPosts.some((post) => post.id === editingId)
+              ? localPosts.map((post) => (post.id === editingId ? savedPost : post))
+              : [savedPost, ...localPosts]
+            : [savedPost, ...localPosts.filter((post) => post.id !== savedPost.id)];
+          writeLocalPosts(updatedPosts);
+          posts = updatedPosts;
+          renderTable();
+          editingId = null;
+          event.target.reset();
+          document.getElementById('author').value = 'Seun Web News';
+          document.getElementById('status').value = 'Published';
+        } catch (error) {
+          console.error('Unable to save article:', error);
+          alert(error.message || 'Unable to save the article. Please try again.');
+        }
+      });
+
+      auth.onAuthStateChanged(async (user) => {
+        if (!initSession(user)) return;
+        const firestorePosts = await loadPostsFromFirestore();
+        posts = firestorePosts;
+        writeLocalPosts(posts);
+        renderTable();
+      });
+    </script>
+  </body>
+</html>

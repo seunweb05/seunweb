@@ -1,0 +1,16 @@
+{
+  "name": "seun-web-news",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Scheduled RSS publisher for Seun Web News",
+  "scripts": {
+    "sync-news": "node scripts/sync-news.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.4.0",
+    "rss-parser": "^3.13.0"
+  }
+}

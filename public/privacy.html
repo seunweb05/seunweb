@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy | Seun Web News</title>
+    <meta
+      name="description"
+      content="Privacy policy for Seun Web News. Learn how we collect, use, and protect information."
+    />
+    <style>
+      :root {
+        --bg: #07131f;
+        --bg-soft: #0d1f2d;
+        --panel: #122534;
+        --panel-strong: #18334a;
+        --text: #eef6ff;
+        --muted: #b5c8d8;
+        --line: rgba(255, 255, 255, 0.1);
+        --primary: #74baff;
+        --primary-strong: #2f7ae8;
+        --accent: #f2c66d;
+        --shadow: 0 22px 54px rgba(4, 10, 15, 0.42);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        background: radial-gradient(circle at top left, rgba(116, 186, 255, 0.12), transparent 28%), linear-gradient(180deg, var(--bg) 0%, #0b1b29 100%);
+        color: var(--text);
+        line-height: 1.8;
+      }
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(7, 19, 31, 0.8);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: 0.05em; }
+      .brand-mark { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 14px; background: linear-gradient(135deg, #fbe7aa 0%, #f2c66d 32%, #d99d2f 100%); color: #0b1a25; font-weight: 900; }
+      .nav-links { display: flex; gap: 20px; color: var(--muted); }
+      .page { padding: 72px 0 80px; }
+      .card {
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 28px 24px;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2.3rem, 5vw, 3.5rem);
+        letter-spacing: -0.06em;
+      }
+      h2 { margin: 28px 0 10px; font-size: 1.4rem; }
+      p, li { color: var(--muted); }
+      ul { padding-left: 18px; }
+      .footer {
+        padding: 24px 0 56px;
+        color: var(--muted);
+      }
+      .footer-inner {
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+      @media (max-width: 860px) { .nav-links { display: none; } }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a href="index.html" class="brand" aria-label="Seun Web News home">
+          <span class="brand-mark">SWN</span>
+          <span>SEUN WEB NEWS</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="container card">
+        <h1>Privacy Policy</h1>
+        <p>Seun Web News values your privacy and is committed to handling your information responsibly.</p>
+
+        <h2>Information we collect</h2>
+        <p>We may collect information such as your email address when you contact us, subscribe, or interact with the site.</p>
+
+        <h2>How we use information</h2>
+        <p>We use collected information to respond to inquiries, send relevant updates, improve site experience, and maintain the quality of our services.</p>
+
+        <h2>Cookies</h2>
+        <p>We may use cookies or similar tools to improve performance, remember preferences, and understand user engagement on the website.</p>
+
+        <h2>Third-party services</h2>
+        <p>We may use Firebase, analytics tools, and third-party integrations to help publish and operate the website. These providers may process data according to their own privacy policies.</p>
+
+        <h2>Your choices</h2>
+        <p>You may contact us to request information about your data or ask that it be updated or removed from our systems where applicable.</p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">© 2026 Seun Web News</div>
+    </footer>
+  </body>
+</html>

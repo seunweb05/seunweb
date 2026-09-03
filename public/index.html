@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seun Web News | Nigeria, Business, Tech & World News</title>
+    <meta
+      name="description"
+      content="Seun Web News delivers timely reporting on Nigeria, business, technology, and global developments with a clear, modern editorial style."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a href="#top" class="brand" aria-label="Seun Web News home">
+          <span class="brand-mark">SWN</span>
+          <span>SEUN WEB NEWS</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#latest-news">Latest</a>
+          <a href="#newsroom">Nigeria</a>
+          <a href="#newsroom">Business</a>
+          <a href="#newsroom">Tech</a>
+          <a href="#newsroom">World</a>
+          <a href="#portfolio">My Work</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="mode-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+          <a class="btn btn-secondary" href="mailto:seunjoel05@gmail.com">Email Us</a>
+          <a class="btn btn-primary" href="login.html">Editor Login</a>
+          <a class="btn btn-primary" href="https://wa.me/2349154644958" target="_blank" rel="noreferrer">Book a Call</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="news-strip">
+      <div class="news-strip-inner">
+        <span class="news-tag active">AI</span>
+        <span class="news-tag">Startup</span>
+        <span class="news-tag">Gadgets</span>
+        <span class="news-tag">Crypto</span>
+        <span class="news-tag">Nigeria Tech</span>
+        <span class="news-tag">Reviews</span>
+      </div>
+    </div>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Independent reporting • Nigeria & world</span>
+            <h1>Smart digital experiences built for clarity.</h1>
+            <p class="lead">
+              Seun Web News is a live portfolio project demonstrating how I design, build, and publish fast, responsive websites with Firebase, JavaScript, and modern frontend practices.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#portfolio">View My Work</a>
+              <a class="btn btn-secondary" href="#contact">Hire Me</a>
+            </div>
+
+            <div class="news-badges" aria-label="News categories">
+              <span>Nigeria</span>
+              <span>Business</span>
+              <span>Tech</span>
+              <span>World</span>
+              <span>Reviews</span>
+            </div>
+
+            <div class="hero-meta">
+              <div><strong>Daily</strong><br />Updated coverage</div>
+              <div><strong>Trusted</strong><br />Clear perspective</div>
+              <div><strong>Focused</strong><br />Actionable insight</div>
+            </div>
+
+            <div class="hero-trust-strip" aria-label="Editorial trust highlights">
+              <div>
+                <span class="trust-label">Live Updates</span>
+                <strong>24/7 coverage</strong>
+              </div>
+              <div>
+                <span class="trust-label">Verified Sources</span>
+                <strong>Clean reporting</strong>
+              </div>
+              <div>
+                <span class="trust-label">Reader Focus</span>
+                <strong>Clear decisions</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Business team collaborating" />
+            <div class="floating-card">
+              <span class="label">Media Brand</span>
+              <span class="value">SNH</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="newsroom">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">Latest coverage</div>
+              <h2>Newsroom highlights</h2>
+            </div>
+            <p class="subcopy">
+              Fresh reporting and insight across politics, technology, sport, and business.
+            </p>
+          </div>
+
+          <div class="search-box">
+            <span>🔎</span>
+            <input type="text" id="news-search" placeholder="Search news, topics, or categories" aria-label="Search news" />
+          </div>
+
+          <div class="filter-row" aria-label="News categories">
+            <button class="filter-btn active" data-filter="all" type="button">All</button>
+            <button class="filter-btn" data-filter="ai" type="button">AI</button>
+            <button class="filter-btn" data-filter="startup" type="button">Startup</button>
+            <button class="filter-btn" data-filter="gadgets" type="button">Gadgets</button>
+            <button class="filter-btn" data-filter="crypto" type="button">Crypto</button>
+            <button class="filter-btn" data-filter="nigeria-tech" type="button">Nigeria Tech</button>
+            <button class="filter-btn" data-filter="reviews" type="button">Reviews</button>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card" data-category="ai" id="ai-card">
+              <div class="icon-box">AI</div>
+              <h3>AI</h3>
+              <p>AI tools, model updates, and the practical impact of intelligent automation on work and life.</p>
+            </article>
+
+            <article class="service-card" data-category="startup" id="startup-card">
+              <div class="icon-box">ST</div>
+              <h3>Startup</h3>
+              <p>Founders, fundraising, scale-up lessons, and the new wave of digital entrepreneurship.</p>
+            </article>
+
+            <article class="service-card" data-category="gadgets" id="gadgets-card">
+              <div class="icon-box">G</div>
+              <h3>Gadgets</h3>
+              <p>Latest device launches, comparisons, and the gear changing how people work and connect.</p>
+            </article>
+
+            <article class="service-card" data-category="crypto" id="crypto-card">
+              <div class="icon-box">C</div>
+              <h3>Crypto</h3>
+              <p>Market moves, blockchain opportunities, and the digital assets reshaping finance.</p>
+            </article>
+
+            <article class="service-card" data-category="nigeria-tech" id="nigeria-tech-card">
+              <div class="icon-box">NG</div>
+              <h3>Nigeria Tech</h3>
+              <p>Local innovation, startup momentum, and the Nigerian digital economy in focus.</p>
+            </article>
+
+            <article class="service-card" data-category="reviews" id="reviews-card">
+              <div class="icon-box">RV</div>
+              <h3>Reviews</h3>
+              <p>Hands-on product assessments, honest takeaways, and the tools worth your attention.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="latest-news">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">From the newsroom</div>
+              <h2>Latest News</h2>
+            </div>
+            <p class="subcopy">Fresh stories published by Seun News Hub, updated in real time.</p>
+          </div>
+          <div class="latest-news-grid" id="latest-news-grid">
+            <div class="latest-news-empty">Loading the latest stories...</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-showcase" id="portfolio">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">Featured portfolio project</div>
+              <h2>A real newsroom product, built end to end.</h2>
+            </div>
+            <p class="subcopy">A practical example of my ability to turn an idea into a polished, deployable digital product.</p>
+          </div>
+
+          <div class="portfolio-feature">
+            <div class="portfolio-feature-copy">
+              <span class="project-label">Seun Web News</span>
+              <h3>Editorial publishing platform</h3>
+              <p>I designed and built this responsive news platform with a public reading experience, Firebase-powered content management, protected editor access, and automated RSS publishing.</p>
+              <div class="tech-stack" aria-label="Technologies used">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Firebase</span><span>GitHub Actions</span>
+              </div>
+              <div class="project-results">
+                <div><strong>Responsive</strong><span>Desktop to mobile</span></div>
+                <div><strong>Secure</strong><span>Auth and rules</span></div>
+                <div><strong>Automated</strong><span>Scheduled publishing</span></div>
+              </div>
+              <a class="btn btn-primary" href="#contact">Discuss Your Project</a>
+            </div>
+            <div class="portfolio-feature-visual" aria-label="News platform preview">
+              <div class="browser-chrome"><span></span><span></span><span></span><b>seunwebnews.web.app</b></div>
+              <div class="preview-content">
+                <span class="preview-kicker">Independent reporting</span>
+                <strong>News with context.<br />Built for modern readers.</strong>
+                <div class="preview-lines"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="insight-band">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">Editorial promise</div>
+              <h2>Smarter reporting. Clearer perspective.</h2>
+            </div>
+          </div>
+
+          <div class="insight-grid">
+            <article class="insight-card">
+              <span class="insight-index">01</span>
+              <h3>Fast-moving coverage</h3>
+              <p>We keep the focus on the stories and shifts that matter most to decision-makers and everyday readers.</p>
+            </article>
+            <article class="insight-card">
+              <span class="insight-index">02</span>
+              <h3>Strong local relevance</h3>
+              <p>From Nigeria to global markets, our coverage stays grounded in the real issues shaping people’s lives.</p>
+            </article>
+            <article class="insight-card">
+              <span class="insight-index">03</span>
+              <h3>Sharper business insight</h3>
+              <p>We translate news into useful context—so readers understand what is happening and why it matters.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">What I can build for you</div>
+              <h2>Professional websites that earn attention and trust.</h2>
+            </div>
+            <p class="subcopy">
+              I help founders, creators, and small businesses turn their ideas into polished, useful digital experiences.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="icon-box">01</div>
+              <h3>Landing pages</h3>
+              <p>Focused pages that explain your offer clearly and guide visitors toward action.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon-box">02</div>
+              <h3>Frontend development</h3>
+              <p>Responsive interfaces with clean structure, thoughtful interactions, and strong mobile support.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon-box">03</div>
+              <h3>Firebase solutions</h3>
+              <p>Authentication, Firestore content, hosting, and practical admin dashboards for growing products.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="container about-grid">
+          <div class="about-photo">
+            <div class="placeholder">Independent newsroom</div>
+          </div>
+
+          <div class="about-copy">
+            <div class="kicker">About us</div>
+            <h2>Built for readers who want the signal, not the noise.</h2>
+            <p>
+              Seun Web News helps curious readers understand the stories shaping Nigeria, technology, business, and the wider world.
+            </p>
+            <ul>
+              <li>Stories selected for relevance and public value.</li>
+              <li>Reporting that separates verified facts from the rush of opinion.</li>
+              <li>Context that helps readers understand what comes next.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mission-section">
+        <div class="container featured-section">
+          <article class="feature-story">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80" alt="Featured article" />
+            <div class="feature-story-content">
+              <div class="feature-meta">
+                <span>Featured Article</span>
+                <span>7 min read</span>
+              </div>
+              <h3>AI is changing how startups build products, hire talent, and ship faster.</h3>
+              <p>From automating workflows to accelerating product research, artificial intelligence is becoming one of the clearest advantages for modern founders.</p>
+            </div>
+          </article>
+
+          <aside class="side-list">
+            <div class="kicker">Trending now</div>
+            <ul class="trending-list">
+              <li>
+                <span class="rank">1</span>
+                <div>
+                  <strong>Why Nigerian tech founders are moving faster with AI tools</strong>
+                  <span>Startup</span>
+                </div>
+              </li>
+              <li>
+                <span class="rank">2</span>
+                <div>
+                  <strong>The next wave of crypto regulation is already changing markets</strong>
+                  <span>Crypto</span>
+                </div>
+              </li>
+              <li>
+                <span class="rank">3</span>
+                <div>
+                  <strong>These gadgets are redefining productivity for remote teams</strong>
+                  <span>Gadgets</span>
+                </div>
+              </li>
+              <li>
+                <span class="rank">4</span>
+                <div>
+                  <strong>Startups are using smarter data stacks to scale faster</strong>
+                  <span>Startup</span>
+                </div>
+              </li>
+              <li>
+                <span class="rank">5</span>
+                <div>
+                  <strong>Top AI review: tools worth paying for in 2026</strong>
+                  <span>Reviews</span>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="mission-section">
+        <div class="container mission-grid">
+          <div class="mission-panel">
+            <div class="kicker">Our mission</div>
+            <h3>To make important stories easier to understand and harder to ignore.</h3>
+            <p>
+              We believe strong journalism should be accessible, useful, and rooted in the realities of the people it serves.
+            </p>
+          </div>
+
+          <div class="team-grid">
+            <article class="team-card">
+              <div class="team-avatar">SJ</div>
+              <span class="team-role">Editor in chief</span>
+              <h3>Seun Joel</h3>
+              <p>Sets the editorial direction and keeps every story focused, accurate, and reader-first.</p>
+            </article>
+
+            <article class="team-card">
+              <div class="team-avatar">AB</div>
+              <span class="team-role">Technology desk</span>
+              <h3>Ada Bright</h3>
+              <p>Tracks the tools, companies, and ideas changing how Africa works and connects.</p>
+            </article>
+
+            <article class="team-card">
+              <div class="team-avatar">MK</div>
+              <span class="team-role">Business desk</span>
+              <h3>Mark Kels</h3>
+              <p>Explains the markets, decisions, and economic shifts shaping everyday opportunity.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">Testimonials</div>
+              <h2>What readers value about Seun Web News.</h2>
+            </div>
+          </div>
+
+          <div class="testimonials-grid">
+            <article class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>“The reporting is clear, timely, and grounded in the issues that matter to people building and working in Nigeria.”</p>
+              <div class="reviewer">
+                <div class="reviewer-badge">AL</div>
+                <div>
+                  <strong>Adebayo L.</strong>
+                  <span>Founder, BluePeak Studio</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>“From the first conversation, everything felt intentional. The website and positioning gave our business a stronger identity and made our offer easier to trust.”</p>
+              <div class="reviewer">
+                <div class="reviewer-badge">TN</div>
+                <div>
+                  <strong>Tosin N.</strong>
+                  <span>Director, Nera Capital</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>“Seun Web News makes complicated developments feel readable without flattening the story.”</p>
+              <div class="reviewer">
+                <div class="reviewer-badge">RM</div>
+                <div>
+                  <strong>Ruth M.</strong>
+                  <span>Owner, Coreline Events</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="stats-strip">
+        <div class="container stats-grid">
+          <div class="stat-box">
+            <strong>1:1</strong>
+            <span>Personal attention</span>
+          </div>
+          <div class="stat-box">
+            <strong>24/7</strong>
+            <span>Visibility mindset</span>
+          </div>
+          <div class="stat-box">
+            <strong>100%</strong>
+              <span>Reader-first focus</span>
+          </div>
+          <div class="stat-box">
+            <strong>100%</strong>
+            <span>Professional care</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="process">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">Our editorial standard</div>
+              <h2>A focused process built for clarity and trust.</h2>
+            </div>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card">
+              <div class="icon-box">1</div>
+              <h3>Understand</h3>
+              <p>We identify the facts, voices, and context readers need.</p>
+            </article>
+            <article class="step-card">
+              <div class="icon-box">2</div>
+              <h3>Build</h3>
+              <p>We publish clean, accessible stories that respect your attention.</p>
+            </article>
+            <article class="step-card">
+              <div class="icon-box">3</div>
+              <h3>Convert</h3>
+              <p>We explain what changed, why it matters, and what to watch next.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">Coverage desk</div>
+              <h2>Reporting across the forces shaping modern Nigeria.</h2>
+            </div>
+          </div>
+
+          <div class="portfolio-grid">
+            <article class="portfolio-card">
+              <div class="portfolio-visual">Policy</div>
+              <h3>Nigeria & policy</h3>
+              <p>Decisions, institutions, and public issues with direct impact on daily life.</p>
+            </article>
+            <article class="portfolio-card">
+              <div class="portfolio-visual">Tech</div>
+              <h3>Technology & startups</h3>
+              <p>Innovation, founders, products, and the infrastructure behind digital change.</p>
+            </article>
+            <article class="portfolio-card">
+              <div class="portfolio-visual">World</div>
+              <h3>Business & world</h3>
+              <p>Markets and global developments through a practical, locally relevant lens.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="advantages">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="kicker">Why choose us</div>
+              <h2>More than a website — a better way to show your work.</h2>
+            </div>
+          </div>
+
+          <div class="value-grid">
+            <article class="value-card">
+              <span class="number">01</span>
+              <h3>Clear Messaging</h3>
+              <p>Your offer is explained in a way that feels premium, confident, and easy to understand.</p>
+            </article>
+
+            <article class="value-card">
+              <span class="number">02</span>
+              <h3>Trust First</h3>
+              <p>Every design choice is shaped to make your business feel credible and worth doing business with.</p>
+            </article>
+
+            <article class="value-card">
+              <span class="number">03</span>
+              <h3>Higher Focus</h3>
+              <p>We remove clutter so visitors understand your value quickly and know what to do next.</p>
+            </article>
+
+            <article class="value-card">
+              <span class="number">04</span>
+              <h3>Built to Convert</h3>
+              <p>Your website is designed to help people take action without confusion or hesitation.</p>
+            </article>
+          </div>
+
+          <div class="cta-banner">
+            <div>
+              <h3>Ready to make your brand feel more premium?</h3>
+              <p>Let’s turn your digital presence into something people trust and remember.</p>
+            </div>
+            <a class="btn btn-primary" href="#contact">Start a Conversation</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container contact-wrap">
+          <div class="contact-card">
+            <div class="kicker">Contact</div>
+            <h2>Have a project in mind?</h2>
+            <p class="subcopy">Tell me what you are building and I will help turn the idea into a fast, polished, and reliable website.</p>
+
+            <ul class="contact-list">
+              <li>
+                <span class="bullet-icon">☎</span>
+                <div>
+                  <strong>Phone</strong><br />
+                  <a href="tel:+2349154644958">+234 915 464 4958</a>
+                </div>
+              </li>
+              <li>
+                <span class="bullet-icon">✉</span>
+                <div>
+                  <strong>Email</strong><br />
+                  <a href="mailto:seunjoel05@gmail.com">seunjoel05@gmail.com</a>
+                </div>
+              </li>
+              <li>
+                <span class="bullet-icon">WA</span>
+                <div>
+                  <strong>WhatsApp</strong><br />
+                  <a href="https://wa.me/2349154644958?text=Hello%20Seun%20Web%20News%2C%20I%20found%20your%20website%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer">Chat directly</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-form">
+            <div class="kicker">Send a message</div>
+            <form action="https://formsubmit.co/seunjoel05@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="New project enquiry from Seun Web News" />
+              <input type="hidden" name="_next" value="https://seunnewsite2026.web.app/thank-you.html" />
+              <input type="hidden" name="_captcha" value="true" />
+              <div class="field-row">
+                <input type="text" name="name" placeholder="Full Name" required />
+                <input type="email" name="email" placeholder="Email Address" required />
+              </div>
+              <input type="text" name="subject" placeholder="Subject" />
+              <textarea name="message" placeholder="Tell us what you need..." required></textarea>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              <a class="whatsapp-button" href="https://wa.me/2349154644958?text=Hello%20Seun%20Web%20News%2C%20I%20found%20your%20website%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer">Message me on WhatsApp</a>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="newsletter-wrap">
+          <h3>Subscribe to our newsletter</h3>
+          <form class="newsletter-form" method="POST" action="mailto:seunjoel05@gmail.com" enctype="text/plain">
+            <input type="email" name="email" placeholder="Enter your email" aria-label="Email" required />
+            <button type="submit" class="btn btn-primary">Join</button>
+          </form>
+          <div class="social-links" aria-label="Social media links">
+            <a class="social-link" href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>
+            <a class="social-link" href="https://x.com" target="_blank" rel="noreferrer" aria-label="X">X</a>
+            <a class="social-link" href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+            <a class="social-link" href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">f</a>
+            <a class="social-link" href="https://github.com/seunweb05/seunweb" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+          </div>
+        </div>
+
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="brand" aria-label="Seun Web News home">
+              <span class="brand-mark">SWN</span>
+              <span>SEUN WEB NEWS</span>
+            </div>
+            <p>Independent reporting and insight across Nigeria, business, technology, and the world’s most important stories.</p>
+          </div>
+
+          <div class="footer-links">
+            <div>
+              <strong>Sections</strong>
+              <a href="#latest-news">Latest</a>
+              <a href="#newsroom">Nigeria</a>
+              <a href="#newsroom">World</a>
+              <a href="#reviews-card">Reviews</a>
+            </div>
+            <div>
+              <strong>Company</strong>
+              <a href="about.html">About</a>
+              <a href="#services">Services</a>
+              <a href="#contact">Contact</a>
+              <a href="login.html">Admin</a>
+            </div>
+            <div>
+              <strong>Legal</strong>
+              <a href="privacy.html">Privacy</a>
+              <a href="about.html">Terms</a>
+              <a href="#contact">Advertise</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-inner footer-bottom">
+          <div>© 2026 Seun Web News. All rights reserved.</div>
+          <div>News. Insight. Impact.</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <script>
+    const latestNewsGrid = document.getElementById('latest-news-grid');
+    const POSTS_KEY = 'snh_posts';
+    const defaultNewsImage = 'https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=900&q=80';
+    const firebaseConfig = {
+      apiKey: 'AIzaSyAyCqg3RMxA2KRXg-YtuVn1CFePbfHn5sc',
+      authDomain: 'seunnewsite2026.firebaseapp.com',
+      projectId: 'seunnewsite2026',
+      storageBucket: 'seunnewsite2026.firebasestorage.app',
+      messagingSenderId: '674678776858'
+    };
+    const app = firebase.apps.length ? firebase.app() : firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore(app);
+
+    const localPosts = () => {
+      try {
+        return JSON.parse(localStorage.getItem(POSTS_KEY) || '[]')
+          .filter((post) => post && post.status === 'Published')
+          .map((post) => ({
+            title: post.title,
+            summary: post.summary,
+            source: post.author || 'Seun Web News',
+            publishedAt: post.createdAt || new Date().toISOString(),
+            url: `article.html?id=${encodeURIComponent(post.id || `local-${Date.now()}`)}`,
+            image: post.imageUrl || defaultNewsImage,
+            category: post.category || 'General'
+          }));
+      } catch {
+        return [];
+      }
+    };
+
+    const firestorePosts = async () => {
+      try {
+        const snapshot = await db.collection('posts').where('status', '==', 'Published').orderBy('createdAt', 'desc').limit(6).get();
+        return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })).map((post) => ({
+          title: post.title,
+          summary: post.summary,
+          source: post.author || 'Seun Web News',
+          publishedAt: post.createdAt || new Date().toISOString(),
+          url: `article.html?id=${encodeURIComponent(post.id || `local-${Date.now()}`)}`,
+          externalUrl: post.externalUrl || `article.html?id=${encodeURIComponent(post.id || `local-${Date.now()}`)}`,
+          image: post.imageUrl || defaultNewsImage,
+          category: post.category || 'General'
+        }));
+      } catch (error) {
+        console.warn('Firestore posts not available:', error);
+        return localPosts();
+      }
+    };
+    const fallbackPosts = [
+      {
+        title: 'Nigeria pushes digital transformation to expand access and efficiency',
+        summary: 'Policy makers and startups are accelerating tech adoption across the economy as digital infrastructure continues to improve.',
+        source: 'Seun Web News',
+        publishedAt: new Date().toISOString(),
+        url: '#',
+        image: defaultNewsImage,
+        category: 'Nigeria'
+      },
+      {
+        title: 'AI remains the biggest business story as founders automate faster',
+        summary: 'Teams are investing in tools that save time, improve decisions, and support faster product delivery in 2026.',
+        source: 'Seun Web News',
+        publishedAt: new Date(Date.now() - 86400000).toISOString(),
+        url: '#',
+        image: defaultNewsImage,
+        category: 'AI'
+      },
+      {
+        title: 'Startup funding is looking more selective, but stronger teams still win',
+        summary: 'Investors are leaning toward businesses with clear traction, tighter execution, and market relevance.',
+        source: 'Seun Web News',
+        publishedAt: new Date(Date.now() - 172800000).toISOString(),
+        url: '#',
+        image: defaultNewsImage,
+        category: 'Startup'
+      }
+    ];
+
+    const RSS_FEEDS = [
+      { url: 'https://punchng.com/feed/', category: 'Nigeria', source: 'The Punch' },
+      { url: 'https://www.vanguardngr.com/feed/', category: 'Nigeria', source: 'Vanguard Nigeria' },
+      { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', category: 'World', source: 'BBC News' },
+      { url: 'https://techcrunch.com/feed/', category: 'Tech', source: 'TechCrunch' }
+    ];
+
+    const formatDate = (value) => {
+      const date = value ? new Date(value) : new Date();
+      return Number.isNaN(date.getTime()) ? 'Recently' : date.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    };
+
+    const stripHtml = (value) => String(value || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+
+    const escapeHtml = (value) => String(value || '').replace(/[&<>"']/g, (character) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    }[character]));
+
+    const imageFallback = (image) => {
+      image.onerror = () => {
+        image.onerror = null;
+        image.src = defaultNewsImage;
+      };
+    };
+
+    const normalizeRssArticle = (item, category, source) => ({
+      title: item.title || 'Untitled story',
+      summary: stripHtml(item.description || item.content || item.summary || 'No summary available yet.'),
+      source: item.author || source,
+      publishedAt: item.pubDate || new Date().toISOString(),
+      url: item.link || '#',
+      image: item.enclosure?.link || item.thumbnail || defaultNewsImage,
+      category: category || 'General'
+    });
+
+    const renderNews = (posts) => {
+      latestNewsGrid.innerHTML = posts.length ? posts.map((post) => {
+        const isExternal = typeof post.externalUrl === 'string' && /^https?:\/\//i.test(post.externalUrl);
+        const href = isExternal ? post.externalUrl : (post.url || 'article.html');
+        const target = isExternal ? '_blank' : '_self';
+        return `
+          <article class="latest-news-card">
+            <img class="latest-news-image" src="${escapeHtml(post.image || defaultNewsImage)}" alt="${escapeHtml(post.title)}" loading="lazy" onerror="imageFallback(this)">
+            <div class="latest-news-copy">
+              <span class="news-category">${escapeHtml(post.category || 'General')}</span>
+              <span class="news-source">${escapeHtml(post.source || 'Seun Web News')}</span>
+              <h3>${escapeHtml(post.title)}</h3>
+              <p>${escapeHtml(post.summary)}</p>
+              <div class="news-card-meta">
+                <span>${formatDate(post.publishedAt)}</span>
+                <a class="read-more" href="${escapeHtml(href)}" target="${target}" rel="noopener noreferrer">Read More →</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('') : '<div class="latest-news-empty">No stories available right now. Please check back soon.</div>';
+
+      const cards = latestNewsGrid.querySelectorAll('.latest-news-card');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        cards.forEach((card) => card.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      cards.forEach((card, index) => {
+        card.style.setProperty('--news-delay', `${index * 0.2}s`);
+        observer.observe(card);
+      });
+    };
+
+    async function loadNewsFromRss() {
+      try {
+        const firestoreItems = await firestorePosts();
+        if (firestoreItems.length) {
+          renderNews(firestoreItems);
+          return;
+        }
+
+        const feedResults = await Promise.all(
+          RSS_FEEDS.map(async (feed) => {
+            const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}`;
+            const response = await fetch(proxyUrl, { headers: { Accept: 'application/json' } });
+            if (!response.ok) {
+              throw new Error(`RSS feed request failed: ${response.status}`);
+            }
+            const data = await response.json();
+            return (data.items || []).slice(0, 2).map((item) => normalizeRssArticle(item, feed.category, feed.source));
+          })
+        );
+
+        const posts = feedResults.flat().sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)).slice(0, 6);
+        const mergedPosts = [...localPosts(), ...posts].slice(0, 6);
+        renderNews(mergedPosts.length ? mergedPosts : fallbackPosts);
+      } catch (error) {
+        console.error('RSS news feed failed:', error);
+        renderNews(localPosts().length ? localPosts() : fallbackPosts);
+      }
+    }
+
+    loadNewsFromRss();
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const storyCards = document.querySelectorAll('.service-card[data-category]');
+    const searchInput = document.getElementById('news-search');
+    const themeToggle = document.getElementById('theme-toggle');
+    let activeFilter = 'all';
+
+    function applyNewsFilters() {
+      const query = (searchInput.value || '').trim().toLowerCase();
+
+      storyCards.forEach((card) => {
+        const category = card.dataset.category || '';
+        const text = card.textContent.toLowerCase();
+        const matchesCategory = activeFilter === 'all' || category === activeFilter;
+        const matchesSearch = !query || text.includes(query);
+        card.style.display = matchesCategory && matchesSearch ? 'block' : 'none';
+      });
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+        filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+        applyNewsFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', applyNewsFilters);
+
+    const root = document.documentElement;
+    const storedTheme = localStorage.getItem('snh-theme') || 'dark';
+    const applyTheme = (theme) => {
+      const isDark = theme === 'dark';
+      root.style.setProperty('--bg', isDark ? '#07131f' : '#f3f7fb');
+      root.style.setProperty('--bg-soft', isDark ? '#0d1f2d' : '#edf3fa');
+      root.style.setProperty('--panel', isDark ? '#112738' : '#ffffff');
+      root.style.setProperty('--panel-strong', isDark ? '#163349' : '#eaf2fa');
+      root.style.setProperty('--text', isDark ? '#eff6ff' : '#102131');
+      root.style.setProperty('--muted', isDark ? '#b7c9d8' : '#53677d');
+      root.style.setProperty('--line', isDark ? 'rgba(255,255,255,0.09)' : 'rgba(16,33,49,0.09)');
+      root.style.setProperty('--white', isDark ? '#ffffff' : '#ffffff');
+      root.style.setProperty('--header-bg', isDark ? 'rgba(8, 17, 25, 0.82)' : 'rgba(255,255,255,0.85)');
+      root.style.setProperty('--header-surface', isDark ? 'rgba(11, 22, 32, 0.84)' : 'rgba(255,255,255,0.75)');
+      root.style.setProperty('--mode-toggle-bg', isDark ? 'rgba(255,255,255,0.04)' : 'rgba(15, 23, 42, 0.02)');
+      root.style.setProperty('--shadow', isDark ? '0 22px 54px rgba(0,0,0,0.28)' : '0 22px 54px rgba(23,35,46,0.12)');
+      document.body.style.background = isDark
+        ? 'linear-gradient(180deg, var(--bg) 0%, #0b1b29 100%)'
+        : 'linear-gradient(180deg, #f6f9fd 0%, #edf3fa 100%)';
+      themeToggle.textContent = isDark ? '🌙' : '☀️';
+    };
+
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = localStorage.getItem('snh-theme') === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('snh-theme', nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    applyTheme(storedTheme);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seun Web News | Editor Login</title>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <style>
+      :root {
+        --bg: #07131f;
+        --bg-soft: #0d1d2b;
+        --panel: #112738;
+        --panel-strong: #17314c;
+        --text: #eef6ff;
+        --muted: #b9cad9;
+        --line: rgba(255, 255, 255, 0.08);
+        --primary: #4ea7ff;
+        --primary-strong: #2a7ef2;
+        --accent: #f5b942;
+        --success: #41d39b;
+        --danger: #ff718b;
+        --shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: radial-gradient(circle at top, rgba(78,167,255,0.15), transparent 35%), linear-gradient(180deg, var(--bg) 0%, #0b1b2a 100%);
+        color: var(--text);
+      }
+
+      a { color: inherit; text-decoration: none; }
+      input, button { font: inherit; }
+
+      .page-shell {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 32px 16px;
+      }
+
+      .auth-panel {
+        width: min(1100px, 100%);
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .brand-side {
+        background: linear-gradient(135deg, rgba(78,167,255,0.18), rgba(245,185,66,0.08));
+        padding: 42px 36px;
+        border-right: 1px solid var(--line);
+      }
+
+      .brand-mark {
+        width: 68px;
+        height: 68px;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #f7d778, #f5b942, #d98f17);
+        color: #0d1723;
+        font-size: 1.3rem;
+        font-weight: 900;
+        letter-spacing: -0.06em;
+        box-shadow: 0 18px 28px rgba(245,185,66,0.25);
+      }
+
+      .brand-name {
+        margin-top: 24px;
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -0.06em;
+      }
+
+      .tagline {
+        color: var(--muted);
+        max-width: 400px;
+        margin-top: 12px;
+        line-height: 1.8;
+      }
+
+      .mini-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .mini-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 16px;
+      }
+
+      .mini-card strong {
+        display: block;
+        font-size: 1.4rem;
+        margin-top: 6px;
+      }
+
+      .forms-side {
+        padding: 40px 28px;
+      }
+
+      .tab-row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .tab {
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.02);
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .tab.active {
+        background: linear-gradient(135deg, rgba(78,167,255,0.14), rgba(42,126,242,0.08));
+        border-color: rgba(78,167,255,0.36);
+        color: var(--text);
+      }
+
+      .form-card {
+        display: none;
+      }
+
+      .form-card.active {
+        display: block;
+      }
+
+      .form-card h2 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        letter-spacing: -0.05em;
+      }
+
+      .form-sub {
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      .field-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .field-grid.two {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      input {
+        width: 100%;
+        background: rgba(255,255,255,0.02);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 13px 14px;
+        color: var(--text);
+      }
+
+      button.primary {
+        width: 100%;
+        border: none;
+        border-radius: 12px;
+        padding: 14px 18px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 16px 28px rgba(42,126,242,0.28);
+      }
+
+      .note {
+        margin-top: 16px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      .note a { color: var(--primary); }
+
+      .toast {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background: #0f2030;
+        color: var(--text);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 12px 16px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.2s ease;
+        pointer-events: none;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 860px) {
+        .auth-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .brand-side {
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .field-grid.two {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="auth-panel">
+        <div class="brand-side">
+          <div class="brand-mark">SNH</div>
+          <div class="brand-name">Seun Web News</div>
+          <p class="tagline">
+            A focused newsroom for Nigeria, technology, business, and the ideas shaping tomorrow.
+          </p>
+          <div class="mini-cards">
+            <div class="mini-card">
+                <span>Editorial lens</span>
+                <strong>Nigeria-first</strong>
+            </div>
+            <div class="mini-card">
+                <span>Publishing</span>
+                <strong>Clear</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="forms-side">
+          <div class="tab-row">
+            <button class="tab active" type="button" data-form="login">Editor login</button>
+          </div>
+
+          <div class="form-card active" id="login-card">
+            <h2>Welcome back</h2>
+            <div class="form-sub">Access your admin dashboard and manage content.</div>
+            <form id="login-form" class="field-grid">
+              <label>
+                Email address
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label>
+                Password
+                <input type="password" name="password" placeholder="••••••••" required />
+              </label>
+              <button type="submit" class="primary">Login to Dashboard</button>
+            </form>
+            <div class="note">Editor access is restricted to the site owner.</div>
+          </div>
+
+          <div class="form-card" id="signup-card">
+            <h2>Create account</h2>
+            <div class="form-sub">Set up your admin profile for publishing and management.</div>
+            <form id="signup-form" class="field-grid">
+              <div class="field-grid two">
+                <label>
+                  Full name
+                  <input type="text" name="name" placeholder="John Doe" required />
+                </label>
+                <label>
+                  Phone
+                  <input type="tel" name="phone" placeholder="+234 800 000 0000" />
+                </label>
+              </div>
+              <label>
+                Email address
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label>
+                Password
+                <input type="password" name="password" placeholder="Create password" required />
+              </label>
+              <button type="submit" class="primary">Create Account</button>
+            </form>
+            <div class="note">Already have an account? <a href="#" class="switch-tab" data-form="login">Login</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+      const ALLOWED_ADMIN_EMAIL = 'seunjoel05@gmail.com';
+      const firebaseConfig = {
+        apiKey: 'AIzaSyAyCqg3RMxA2KRXg-YtuVn1CFePbfHn5sc',
+        authDomain: 'seunnewsite2026.firebaseapp.com',
+        projectId: 'seunnewsite2026',
+        storageBucket: 'seunnewsite2026.firebasestorage.app',
+        messagingSenderId: '674678776858'
+      };
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+
+      const showToast = (message) => {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      };
+
+      document.querySelectorAll('.tab').forEach((button) => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.tab').forEach((tab) => tab.classList.toggle('active', tab === button));
+          const target = button.dataset.form;
+          document.getElementById('login-card').classList.toggle('active', target === 'login');
+          document.getElementById('signup-card').classList.toggle('active', target === 'signup');
+        });
+      });
+
+      document.querySelectorAll('.switch-tab').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const target = link.dataset.form;
+          document.querySelectorAll('.tab').forEach((tab) => {
+            tab.classList.toggle('active', tab.dataset.form === target);
+          });
+          document.getElementById('login-card').classList.toggle('active', target === 'login');
+          document.getElementById('signup-card').classList.toggle('active', target === 'signup');
+        });
+      });
+
+      document.getElementById('signup-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        showToast('Create the editor account once in Firebase Console.');
+      });
+
+      document.getElementById('login-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const email = (formData.get('email') || '').trim().toLowerCase();
+        const password = String(formData.get('password') || '');
+
+        if (email !== ALLOWED_ADMIN_EMAIL) {
+          showToast('Only seunjoel05@gmail.com can access this dashboard.');
+          return;
+        }
+
+        auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          .then(() => auth.signInWithEmailAndPassword(email, password))
+          .then((credential) => {
+            if (credential.user.email.toLowerCase() !== ALLOWED_ADMIN_EMAIL) {
+              return auth.signOut().then(() => { throw new Error('unauthorized'); });
+            }
+            showToast('Login successful.');
+            setTimeout(() => { window.location.href = 'admin.html'; }, 700);
+          })
+          .catch((error) => {
+            const message = error.message === 'unauthorized'
+              ? 'This account is not an approved editor.'
+              : error.code === 'auth/operation-not-allowed'
+                ? 'Email/password login is disabled in Firebase Authentication.'
+                : error.code === 'auth/user-not-found'
+                  ? 'Create the editor account in Firebase Authentication first.'
+                  : 'Invalid email or password.';
+            showToast(message);
+          });
+      });
+    </script>
+  </body>
+</html>
